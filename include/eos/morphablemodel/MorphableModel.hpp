@@ -38,7 +38,7 @@
 
 // Forward declaration of an internal function
 namespace eos { namespace morphablemodel { namespace detail {
-	eos::render::Mesh sample_to_mesh(cv::Mat shape, cv::Mat color, std::vector<std::array<int, 3>> tvi, std::vector<std::array<int, 3>> tci, std::vector<cv::Vec2f> texture_coordinates = std::vector<cv::Vec2f>());
+	inline eos::render::Mesh sample_to_mesh(cv::Mat shape, cv::Mat color, std::vector<std::array<int, 3>> tvi, std::vector<std::array<int, 3>> tci, std::vector<cv::Vec2f> texture_coordinates = std::vector<cv::Vec2f>());
 } } }
 
 namespace eos {
@@ -238,7 +238,7 @@ private:
  * @return The loaded Morphable Model.
  * @throw std::runtime_error When the file given in \c filename fails to be opened (most likely because the file doesn't exist).
  */
-MorphableModel load_model(std::string filename)
+inline MorphableModel load_model(std::string filename)
 {
 	MorphableModel model;
 
@@ -259,7 +259,7 @@ MorphableModel load_model(std::string filename)
  * @param[in] model The model to be saved.
  * @param[in] filename Filename for the model.
  */
-void save_model(MorphableModel model, std::string filename)
+inline void save_model(MorphableModel model, std::string filename)
 {
 	std::ofstream file(filename, std::ios::binary);
 	cereal::BinaryOutputArchive output_archive(file);
